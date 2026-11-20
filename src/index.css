@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-arabic: "Cairo", "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --color-maverick-green: #39B66A;
+  --color-maverick-green-dark: #25874D;
+  --color-maverick-charcoal: #242424;
+  --color-maverick-surface: #F4F6F5;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    color: #242424;
+    background-color: #ffffff;
+    scroll-padding-top: 4.5rem;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+
+  html[lang="ar"],
+  html[lang="ar"] body,
+  html[lang="ar"] h1,
+  html[lang="ar"] h2,
+  html[lang="ar"] h3,
+  html[lang="ar"] h4,
+  html[lang="ar"] h5,
+  html[lang="ar"] h6,
+  html[lang="ar"] input,
+  html[lang="ar"] textarea,
+  html[lang="ar"] select,
+  html[lang="ar"] button {
+    font-family: var(--font-arabic);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
