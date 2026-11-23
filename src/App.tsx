@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { LanguageProvider } from './i18n/LanguageContext';
 import { Layout } from './components/Layout';
 import { HomePage } from './pages/HomePage';
@@ -26,7 +26,7 @@ export default function App() {
             />
             <Route
               path="/services/factory-services"
-              element={<ServiceDetailPage slug="factory-services" />}
+              element={<Navigate to="/services/porta-cabins" replace />}
             />
             <Route
               path="/services/consumables-tools"

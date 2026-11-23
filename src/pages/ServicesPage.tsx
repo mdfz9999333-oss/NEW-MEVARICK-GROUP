@@ -1,13 +1,12 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Check, Building2, Factory, Wrench, ShieldCheck } from 'lucide-react';
+import { ArrowRight, Check, Building2, Wrench, ShieldCheck } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageContext';
 import { PageBanner } from '../components/PageBanner';
 import { ResilientImage } from '../components/ResilientImage';
 
 const SERVICE_ICONS: Record<string, typeof Building2> = {
   'porta-cabins': Building2,
-  'factory-services': Factory,
   'consumables-tools': Wrench,
   safety: ShieldCheck,
 };
@@ -88,7 +87,7 @@ export function ServicesPage() {
                     </p>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-2.5 mb-8">
-                      {service.capabilities.slice(0, 6).map((cap) => (
+                      {service.capabilities.slice(0, 8).map((cap) => (
                         <div key={cap} className="flex items-start gap-2">
                           <Check
                             className="w-4 h-4 text-[#25874D] mt-0.5 shrink-0"

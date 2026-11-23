@@ -5,7 +5,6 @@ import {
   ArrowRight,
   Maximize2,
   Building2,
-  Factory,
   Wrench,
   ShieldCheck,
 } from 'lucide-react';
@@ -17,7 +16,6 @@ import { LightboxModal, type LightboxImage } from '../components/LightboxModal';
 
 const SERVICE_ICONS: Record<ServiceSlug, typeof Building2> = {
   'porta-cabins': Building2,
-  'factory-services': Factory,
   'consumables-tools': Wrench,
   safety: ShieldCheck,
 };
@@ -224,7 +222,7 @@ export function ServiceDetailPage({ slug }: ServiceDetailPageProps) {
           <h2 className="font-display text-2xl font-bold text-[#242424] mb-8">
             {t.servicesPage.otherDivisionsHeading}
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {otherServices.map((other) => {
               const OtherIcon = SERVICE_ICONS[other.slug] ?? Building2;
               return (

@@ -1,6 +1,6 @@
 export type Language = 'en' | 'ar';
 
-export type ServiceSlug = 'porta-cabins' | 'factory-services' | 'consumables-tools' | 'safety';
+export type ServiceSlug = 'porta-cabins' | 'consumables-tools' | 'safety';
 
 export type GalleryCategoryKey =
   | 'all'

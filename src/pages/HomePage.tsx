@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import {
   ArrowRight,
   Building2,
-  Factory,
   Wrench,
   ShieldCheck,
   SlidersHorizontal,
@@ -17,7 +16,6 @@ import { PartnerLogoCard } from '../components/PartnerLogoCard';
 
 const SERVICE_ICONS: Record<string, typeof Building2> = {
   'porta-cabins': Building2,
-  'factory-services': Factory,
   'consumables-tools': Wrench,
   safety: ShieldCheck,
 };
@@ -214,7 +212,7 @@ export function HomePage() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {t.services.map((service) => {
               const Icon = SERVICE_ICONS[service.slug] ?? Building2;
               return (

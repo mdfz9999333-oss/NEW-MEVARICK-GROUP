@@ -108,8 +108,8 @@ export function Navbar() {
             </div>
 
             {servicesOpen && (
-              <div className="absolute start-1/2 -translate-x-1/2 rtl:translate-x-1/2 top-full pt-2 w-[560px]">
-                <div className="bg-white border border-neutral-200 rounded-xl shadow-xl p-4 grid grid-cols-2 gap-2">
+              <div className="absolute start-1/2 -translate-x-1/2 rtl:translate-x-1/2 top-full pt-2 w-[640px]">
+                <div className="bg-white border border-neutral-200 rounded-xl shadow-xl p-4 grid grid-cols-3 gap-2.5">
                   {t.services.map((service) => (
                     <Link
                       key={service.slug}
@@ -134,7 +134,7 @@ export function Navbar() {
                       </p>
                     </Link>
                   ))}
-                  <div className="col-span-2 pt-2 mt-1 border-t border-neutral-100 flex items-center justify-between px-2">
+                  <div className="col-span-3 pt-2 mt-1 border-t border-neutral-100 flex items-center justify-between px-2">
                     <span className="text-xs text-neutral-500">
                       {t.nav.servicesSubtitle}
                     </span>
