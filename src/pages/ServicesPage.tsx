@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Check, Building2, Factory, Truck, ShieldCheck } from 'lucide-react';
+import { ArrowRight, Check, Building2, Factory, Wrench, ShieldCheck } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageContext';
 import { PageBanner } from '../components/PageBanner';
 import { ResilientImage } from '../components/ResilientImage';
@@ -8,7 +8,7 @@ import { ResilientImage } from '../components/ResilientImage';
 const SERVICE_ICONS: Record<string, typeof Building2> = {
   'porta-cabins': Building2,
   'factory-services': Factory,
-  logistics: Truck,
+  'consumables-tools': Wrench,
   safety: ShieldCheck,
 };
 

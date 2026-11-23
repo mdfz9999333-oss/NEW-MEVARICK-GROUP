@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageContext';
 import { PageBanner } from '../components/PageBanner';
-import { ResilientImage } from '../components/ResilientImage';
+import { PartnerLogoCard } from '../components/PartnerLogoCard';
 
 export function PartnersPage() {
   const { t } = useLanguage();
@@ -12,8 +12,8 @@ export function PartnersPage() {
     document.title = t.meta.partnersTitle;
   }, [t.meta.partnersTitle]);
 
-  const corporatePartners = t.partners.items.slice(0, 5);
-  const publicSectorPartners = t.partners.items.slice(5);
+  const corporatePartners = t.partners.items.filter((p) => !p.isPublicSector);
+  const publicSectorPartners = t.partners.items.filter((p) => p.isPublicSector);
 
   return (
     <>
@@ -50,24 +50,14 @@ export function PartnersPage() {
             <h3 className="font-display text-lg font-bold text-[#242424] pb-3 border-b border-neutral-200 mb-6">
               {t.partners.corporateSectorLabel}
             </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {corporatePartners.map((partner) => (
-                <div
+                <PartnerLogoCard
                   key={partner.id}
-                  className="bg-white border border-neutral-200 rounded-xl p-6 flex flex-col items-center justify-between text-center hover:border-[#25874D]/50 transition-colors"
-                >
-                  <div className="w-full h-28 flex items-center justify-center mb-4">
-                    <ResilientImage
-                      src={partner.logo}
-                      alt={partner.name}
-                      className="max-h-full max-w-full object-contain"
-                    />
-                  </div>
-                  <div className="pt-3 border-t border-neutral-100 w-full">
-                    <div className="text-sm font-semibold text-[#242424]">{partner.name}</div>
-                    <div className="text-xs text-neutral-500 mt-0.5">{partner.sector}</div>
-                  </div>
-                </div>
+                  partner={partner}
+                  variant="detailed"
+                  jointVentureLabel={t.partners.jointVentureBadge}
+                />
               ))}
             </div>
           </div>
@@ -79,22 +69,11 @@ export function PartnersPage() {
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               {publicSectorPartners.map((partner) => (
-                <div
+                <PartnerLogoCard
                   key={partner.id}
-                  className="bg-[#F4F6F5] border border-neutral-200/80 rounded-xl p-6 flex flex-col items-center justify-between text-center hover:border-[#25874D]/50 transition-colors"
-                >
-                  <div className="w-full h-32 bg-white rounded-lg border border-neutral-200/60 p-4 flex items-center justify-center mb-4">
-                    <ResilientImage
-                      src={partner.logo}
-                      alt={partner.name}
-                      className="max-h-full max-w-full object-contain"
-                    />
-                  </div>
-                  <div className="w-full">
-                    <div className="text-sm font-semibold text-[#242424]">{partner.name}</div>
-                    <div className="text-xs text-neutral-500 mt-0.5">{partner.sector}</div>
-                  </div>
-                </div>
+                  partner={partner}
+                  variant="detailed"
+                />
               ))}
             </div>
           </div>

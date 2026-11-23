@@ -6,6 +6,7 @@ interface ResilientImageProps {
   alt: string;
   className?: string;
   loading?: 'lazy' | 'eager';
+  fallbackVariant?: 'photo' | 'logo';
 }
 
 export function ResilientImage({
@@ -13,10 +14,25 @@ export function ResilientImage({
   alt,
   className = 'w-full h-full object-cover',
   loading = 'lazy',
+  fallbackVariant = 'photo',
 }: ResilientImageProps) {
   const [hasError, setHasError] = useState(false);
 
   if (hasError) {
+    if (fallbackVariant === 'logo') {
+      return (
+        <div
+          role="img"
+          aria-label={alt}
+          className="w-full h-full flex items-center justify-center bg-white text-[#242424] px-3 py-2 text-center"
+        >
+          <span className="font-display text-xs sm:text-sm font-bold tracking-tight text-[#242424]/80 line-clamp-2">
+            {alt}
+          </span>
+        </div>
+      );
+    }
+
     return (
       <div
         role="img"

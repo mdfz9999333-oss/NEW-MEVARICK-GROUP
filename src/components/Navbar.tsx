@@ -39,26 +39,26 @@ export function Navbar() {
     path === '/' ? location.pathname === '/' : location.pathname.startsWith(path);
 
   const navLinkClass = (path: string) =>
-    `transition-colors whitespace-nowrap shrink-0 py-1 text-sm font-medium focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#25874D] ${
+    `transition-colors whitespace-nowrap shrink-0 py-1 text-[13px] xl:text-sm font-medium focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#25874D] ${
       isActive(path)
         ? 'text-[#25874D] font-semibold'
         : 'text-[#242424]/80 hover:text-[#25874D]'
     }`;
 
   return (
-    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-neutral-200/80">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4 xl:gap-8">
+    <header className="sticky top-0 z-40 w-full max-w-full overflow-x-clip bg-white/95 backdrop-blur-md border-b border-neutral-200/80">
+      <div className="w-full max-w-7xl mx-auto px-3 sm:px-5 xl:px-8 h-16 flex items-center justify-between gap-2 sm:gap-3 xl:gap-6">
         {/* Zone 1: Original New Maverick Group Logo Lockup */}
         <Link
           to="/"
-          className="flex items-center gap-2.5 whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#25874D] rounded-sm"
+          className="flex items-center gap-1.5 sm:gap-2.5 min-w-0 shrink sm:shrink-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#25874D] rounded-sm"
         >
           <img
             src="/images/brand/logo-mark-dark.png"
             alt={t.brand.logoAlt}
-            className="h-8 w-8 object-contain shrink-0"
+            className="h-7 w-7 sm:h-8 sm:w-8 object-contain shrink-0"
           />
-          <span className="font-display text-sm sm:text-base font-bold tracking-tight text-[#242424]">
+          <span className="font-display text-[11px] sm:text-sm xl:text-base font-bold tracking-tight text-[#242424] whitespace-nowrap truncate">
             {t.brand.wordmark}
           </span>
         </Link>
@@ -66,7 +66,7 @@ export function Navbar() {
         {/* Zone 2: Desktop Multi-Page Navigation */}
         <nav
           aria-label="Primary Navigation"
-          className="hidden lg:flex items-center gap-5 xl:gap-6"
+          className="hidden lg:flex items-center gap-3 xl:gap-5 2xl:gap-6"
         >
           <Link to="/" className={navLinkClass('/')}>
             {t.nav.home}
@@ -165,17 +165,17 @@ export function Navbar() {
         </nav>
 
         {/* Zone 3: Language Switcher (EN | العربية) + Primary Action + Mobile Menu Toggle */}
-        <div className="flex items-center gap-2.5 shrink-0">
+        <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
           <div
             role="group"
             aria-label="Language Switcher"
-            className="inline-flex items-center bg-[#F4F6F5] border border-neutral-200 rounded-lg p-0.5 text-xs font-semibold shrink-0"
+            className="inline-flex items-center bg-[#F4F6F5] border border-neutral-200 rounded-lg p-0.5 text-[11px] sm:text-xs font-semibold shrink-0"
           >
             <button
               type="button"
               onClick={() => setLang('en')}
               aria-pressed={lang === 'en'}
-              className={`px-2.5 py-1.5 rounded-md transition-colors whitespace-nowrap cursor-pointer ${
+              className={`px-1.5 sm:px-2.5 py-1 sm:py-1.5 rounded-md transition-colors whitespace-nowrap cursor-pointer ${
                 lang === 'en'
                   ? 'bg-[#242424] text-white'
                   : 'text-neutral-600 hover:text-[#242424]'
@@ -190,7 +190,7 @@ export function Navbar() {
               type="button"
               onClick={() => setLang('ar')}
               aria-pressed={lang === 'ar'}
-              className={`px-2.5 py-1.5 rounded-md transition-colors whitespace-nowrap cursor-pointer ${
+              className={`px-1.5 sm:px-2.5 py-1 sm:py-1.5 rounded-md transition-colors whitespace-nowrap cursor-pointer ${
                 lang === 'ar'
                   ? 'bg-[#242424] text-white'
                   : 'text-neutral-600 hover:text-[#242424]'
@@ -202,7 +202,7 @@ export function Navbar() {
 
           <Link
             to="/contact"
-            className="hidden sm:inline-flex items-center justify-center px-4 py-2 text-xs sm:text-sm font-semibold text-white bg-[#25874D] hover:bg-[#1E703F] rounded-lg transition-colors whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#25874D]"
+            className="hidden sm:inline-flex items-center justify-center px-3 xl:px-4 py-1.5 xl:py-2 text-xs xl:text-sm font-semibold text-white bg-[#25874D] hover:bg-[#1E703F] rounded-lg transition-colors whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#25874D]"
           >
             {t.nav.requestQuote}
           </Link>
@@ -212,7 +212,7 @@ export function Navbar() {
             aria-label={mobileOpen ? t.nav.closeMenu : t.nav.openMenu}
             aria-expanded={mobileOpen}
             onClick={() => setMobileOpen((prev) => !prev)}
-            className="lg:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg text-[#242424] hover:bg-[#F4F6F5] transition-colors cursor-pointer"
+            className="lg:hidden inline-flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-lg text-[#242424] hover:bg-[#F4F6F5] transition-colors shrink-0 cursor-pointer"
           >
             {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>

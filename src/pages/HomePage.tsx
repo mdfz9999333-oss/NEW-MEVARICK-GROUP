@@ -4,7 +4,7 @@ import {
   ArrowRight,
   Building2,
   Factory,
-  Truck,
+  Wrench,
   ShieldCheck,
   SlidersHorizontal,
   Clock,
@@ -13,11 +13,12 @@ import {
 } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageContext';
 import { ResilientImage } from '../components/ResilientImage';
+import { PartnerLogoCard } from '../components/PartnerLogoCard';
 
 const SERVICE_ICONS: Record<string, typeof Building2> = {
   'porta-cabins': Building2,
   'factory-services': Factory,
-  logistics: Truck,
+  'consumables-tools': Wrench,
   safety: ShieldCheck,
 };
 
@@ -39,7 +40,7 @@ export function HomePage() {
     'gal-office-1',
     'gal-multi-1',
     'gal-factory-2',
-    'gal-logistics-1',
+    'gal-consumables-1',
   ];
   const featuredGallery = t.gallery.items.filter((item) =>
     featuredGalleryIds.includes(item.id)
@@ -455,21 +456,13 @@ export function HomePage() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-5">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
             {t.partners.items.map((partner) => (
-              <div
+              <PartnerLogoCard
                 key={partner.id}
-                className="bg-white border border-neutral-200 rounded-xl p-5 flex flex-col items-center justify-between text-center"
-              >
-                <div className="w-full h-24 flex items-center justify-center mb-3">
-                  <ResilientImage
-                    src={partner.logo}
-                    alt={partner.name}
-                    className="max-h-full max-w-full object-contain"
-                  />
-                </div>
-                <div className="text-xs font-semibold text-[#242424]">{partner.name}</div>
-              </div>
+                partner={partner}
+                variant="compact"
+              />
             ))}
           </div>
         </div>

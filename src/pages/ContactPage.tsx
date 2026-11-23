@@ -2,7 +2,6 @@ import { useState, useEffect, type FormEvent } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import {
   Mail,
-  Phone,
   MapPin,
   Send,
   CheckCircle2,
@@ -85,9 +84,11 @@ export function ContactPage() {
     if (!emailPattern.test(data.email.trim())) {
       next.email = t.contact.errors.email;
     }
-    const digitsOnly = data.phone.replace(/[^\d]/g, '');
-    if (digitsOnly.length < 8) {
-      next.phone = t.contact.errors.phone;
+    if (data.phone.trim()) {
+      const digitsOnly = data.phone.replace(/[^\d]/g, '');
+      if (digitsOnly.length < 8) {
+        next.phone = t.contact.errors.phone;
+      }
     }
     if (!data.serviceRequired.trim()) {
       next.serviceRequired = t.contact.errors.service;
@@ -114,7 +115,9 @@ export function ContactPage() {
       `${t.contact.confirmation.nameLabel} ${payload.name}`,
       `${t.contact.confirmation.companyLabel} ${payload.companyName}`,
       `${t.contact.confirmation.emailLabel} ${payload.email}`,
-      `${t.contact.confirmation.phoneLabel} ${payload.phone}`,
+      ...(payload.phone.trim()
+        ? [`${t.contact.confirmation.phoneLabel} ${payload.phone.trim()}`]
+        : []),
       `${t.contact.confirmation.serviceLabel} ${payload.serviceRequired}`,
       '',
       t.contact.confirmation.detailsLabel,
@@ -205,26 +208,6 @@ export function ContactPage() {
                   </div>
                 </a>
 
-                <a
-                  href={COMPANY_INFO.phoneHref}
-                  className="flex items-start gap-4 p-5 bg-white border border-neutral-200 rounded-xl hover:border-[#25874D] transition-colors group"
-                >
-                  <div className="w-10 h-10 rounded-lg bg-[#25874D]/10 text-[#25874D] flex items-center justify-center shrink-0">
-                    <Phone className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <div className="text-xs font-medium text-neutral-500">
-                      {t.contact.phoneCardLabel}
-                    </div>
-                    <div
-                      dir="ltr"
-                      className="text-sm sm:text-base font-bold text-[#242424] group-hover:text-[#25874D] transition-colors tabular-nums mt-0.5 text-start"
-                    >
-                      {COMPANY_INFO.phoneDisplay}
-                    </div>
-                  </div>
-                </a>
-
                 <div className="flex items-start gap-4 p-5 bg-white border border-neutral-200 rounded-xl">
                   <div className="w-10 h-10 rounded-lg bg-[#25874D]/10 text-[#25874D] flex items-center justify-center shrink-0">
                     <MapPin className="w-5 h-5" />
@@ -251,13 +234,6 @@ export function ContactPage() {
                 >
                   <Mail className="w-4 h-4" />
                   <span>{t.contact.emailSalesBtn}</span>
-                </a>
-                <a
-                  href={COMPANY_INFO.phoneHref}
-                  className="inline-flex items-center gap-2 px-5 py-3 text-sm font-semibold text-[#242424] bg-white border border-neutral-300 hover:border-[#242424] rounded-lg transition-colors whitespace-nowrap"
-                >
-                  <Phone className="w-4 h-4" />
-                  <span>{t.contact.callSalesBtn}</span>
                 </a>
               </div>
             </div>
@@ -304,14 +280,16 @@ export function ContactPage() {
                           {submittedPayload.email}
                         </span>
                       </div>
-                      <div>
-                        <span className="text-neutral-500">
-                          {t.contact.confirmation.phoneLabel}
-                        </span>{' '}
-                        <span dir="ltr" className="font-semibold tabular-nums">
-                          {submittedPayload.phone}
-                        </span>
-                      </div>
+                      {submittedPayload.phone.trim() && (
+                        <div>
+                          <span className="text-neutral-500">
+                            {t.contact.confirmation.phoneLabel}
+                          </span>{' '}
+                          <span dir="ltr" className="font-semibold tabular-nums">
+                            {submittedPayload.phone}
+                          </span>
+                        </div>
+                      )}
                       <div>
                         <span className="text-neutral-500">
                           {t.contact.confirmation.serviceLabel}

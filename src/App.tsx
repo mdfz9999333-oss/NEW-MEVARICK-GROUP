@@ -29,8 +29,8 @@ export default function App() {
               element={<ServiceDetailPage slug="factory-services" />}
             />
             <Route
-              path="/services/logistics"
-              element={<ServiceDetailPage slug="logistics" />}
+              path="/services/consumables-tools"
+              element={<ServiceDetailPage slug="consumables-tools" />}
             />
             <Route
               path="/services/safety"

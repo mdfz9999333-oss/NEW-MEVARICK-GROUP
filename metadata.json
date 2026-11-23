@@ -1,6 +1,6 @@
 {
   "name": "New Maverick Group",
-  "description": "Portable cabins, modular structures, factory services, specialized logistics, and safety solutions in Saudi Arabia.",
+  "description": "Portable cabins, modular structures, factory services, industrial consumables and tools, and safety solutions in Saudi Arabia.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

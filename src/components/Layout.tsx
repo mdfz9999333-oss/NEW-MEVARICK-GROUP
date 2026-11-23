@@ -11,7 +11,7 @@ export function Layout({ children }: { children: ReactNode }) {
   }, [pathname]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-white text-[#242424]">
+    <div className="min-h-screen w-full max-w-full overflow-x-clip flex flex-col bg-white text-[#242424]">
       <Navbar />
       <main className="flex-1">{children}</main>
       <Footer />

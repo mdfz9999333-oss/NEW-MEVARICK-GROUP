@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Compass,
-  Quote,
   ShieldCheck,
   SlidersHorizontal,
   Clock,
@@ -84,60 +83,8 @@ export function AboutPage() {
         </div>
       </section>
 
-      {/* Executive Leadership */}
-      <section className="py-16 lg:py-24 bg-[#F4F6F5] border-y border-neutral-200/80">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl mb-12">
-            <div className="text-xs font-semibold tracking-wide text-[#25874D] mb-2">
-              {t.about.leadershipKicker}
-            </div>
-            <h2
-              className="font-display text-3xl sm:text-4xl font-bold text-[#242424] tracking-tight mb-3"
-              style={{ textWrap: 'balance' }}
-            >
-              {t.about.leadershipHeading}
-            </h2>
-            <p className="text-base text-neutral-600 leading-relaxed">
-              {t.about.leadershipSubtitle}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {t.leaders.map((leader) => (
-              <article
-                key={leader.id}
-                className="bg-white rounded-2xl border border-neutral-200 p-6 sm:p-8 flex flex-col sm:flex-row gap-6 items-start"
-              >
-                <div className="w-32 h-36 sm:w-40 sm:h-48 rounded-xl overflow-hidden shrink-0 border border-neutral-200 bg-[#F4F6F5]">
-                  <ResilientImage
-                    src={leader.image}
-                    alt={`${leader.name}, ${leader.role}`}
-                    className="w-full h-full object-cover object-top"
-                  />
-                </div>
-
-                <div className="flex-1 min-w-0">
-                  <Quote className="w-6 h-6 text-[#39B66A] mb-3" aria-hidden="true" />
-                  <blockquote className="text-sm sm:text-[15px] text-neutral-700 leading-relaxed mb-5">
-                    “{leader.quote}”
-                  </blockquote>
-                  <div className="pt-4 border-t border-neutral-100">
-                    <div className="font-display text-lg font-bold text-[#242424]">
-                      {leader.name}
-                    </div>
-                    <div className="text-xs font-semibold text-[#25874D] mt-0.5">
-                      {leader.role} · {t.about.companySuffix}
-                    </div>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Operational Pillars */}
-      <section className="py-16 lg:py-24 bg-white">
+      <section className="py-16 lg:py-24 bg-[#F4F6F5] border-t border-neutral-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mb-10">
             <div className="text-xs font-semibold tracking-wide text-[#25874D] mb-2">
@@ -154,11 +101,11 @@ export function AboutPage() {
               return (
                 <div
                   key={item.id}
-                  className="bg-[#F4F6F5] border border-neutral-200/80 rounded-2xl p-6 flex flex-col justify-between"
+                  className="bg-white border border-neutral-200/80 rounded-2xl p-6 flex flex-col justify-between"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-5">
-                      <div className="w-10 h-10 rounded-xl bg-white text-[#25874D] border border-neutral-200 flex items-center justify-center">
+                      <div className="w-10 h-10 rounded-xl bg-[#F4F6F5] text-[#25874D] border border-neutral-200 flex items-center justify-center">
                         <Icon className="w-5 h-5" />
                       </div>
                       <span className="text-xs font-semibold text-neutral-400 tabular-nums">

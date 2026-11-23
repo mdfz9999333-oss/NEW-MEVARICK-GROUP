@@ -6,7 +6,7 @@ import {
   Maximize2,
   Building2,
   Factory,
-  Truck,
+  Wrench,
   ShieldCheck,
 } from 'lucide-react';
 import type { ServiceSlug } from '../i18n/types';
@@ -18,7 +18,7 @@ import { LightboxModal, type LightboxImage } from '../components/LightboxModal';
 const SERVICE_ICONS: Record<ServiceSlug, typeof Building2> = {
   'porta-cabins': Building2,
   'factory-services': Factory,
-  logistics: Truck,
+  'consumables-tools': Wrench,
   safety: ShieldCheck,
 };
 

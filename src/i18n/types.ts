@@ -1,6 +1,6 @@
 export type Language = 'en' | 'ar';
 
-export type ServiceSlug = 'porta-cabins' | 'factory-services' | 'logistics' | 'safety';
+export type ServiceSlug = 'porta-cabins' | 'factory-services' | 'consumables-tools' | 'safety';
 
 export type GalleryCategoryKey =
   | 'all'
@@ -12,7 +12,7 @@ export type GalleryCategoryKey =
   | 'portable-toilets'
   | 'factory-gallery'
   | 'trading-gallery'
-  | 'logistics-gallery';
+  | 'consumables-tools';
 
 export interface TranslatedService {
   slug: ServiceSlug;
@@ -58,14 +58,10 @@ export interface TranslatedPartner {
   name: string;
   sector: string;
   logo: string;
-}
-
-export interface TranslatedLeader {
-  id: string;
-  name: string;
-  role: string;
-  image: string;
-  quote: string;
+  secondaryLogo?: string;
+  secondaryName?: string;
+  isPublicSector?: boolean;
+  isJointVenture?: boolean;
 }
 
 export interface TranslationDictionary {
@@ -153,10 +149,6 @@ export interface TranslationDictionary {
     overviewText: string;
     visionTitle: string;
     visionText: string;
-    leadershipKicker: string;
-    leadershipHeading: string;
-    leadershipSubtitle: string;
-    companySuffix: string;
     imageAlt: string;
     pillarsHeading: string;
     ctaHeading: string;
@@ -164,7 +156,6 @@ export interface TranslationDictionary {
     ctaExploreServices: string;
     ctaContactUs: string;
   };
-  leaders: TranslatedLeader[];
   whyChoose: {
     kicker: string;
     heading: string;
@@ -229,6 +220,7 @@ export interface TranslationDictionary {
     description: string;
     publicSectorLabel: string;
     corporateSectorLabel: string;
+    jointVentureBadge: string;
     ctaHeading: string;
     ctaDescription: string;
     ctaButton: string;
@@ -241,10 +233,8 @@ export interface TranslationDictionary {
     heading: string;
     description: string;
     emailCardLabel: string;
-    phoneCardLabel: string;
     addressCardLabel: string;
     emailSalesBtn: string;
-    callSalesBtn: string;
     formTitle: string;
     formSubtitle: string;
     fields: {
